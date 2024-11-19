@@ -199,10 +199,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Being a libero requires both mental and physical qualities, but the real question here is: can statistics help us determine who is the strongest candidate for the next libero?</p>
 <p>As far as playing time goes, the two players vying for the spot are Sophomore Defensive Specialist, Laney Choboy and True Freshman Defensive Specialist, Olivia Mauch.</p>
 <p>Serving is one of the few aspects a player can control in volleyball. It requires a deep focus on where you want the ball to go and strength to determine the pace and accuracy. For a libero, serving ability is a strong indicator of skill. Since they only serve once every six rotations, this is one of the most direct comparisons we can make between the two players and Lexi Rodriguez.</p>
+<pre><code></code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#message=FALSE/</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -216,11 +219,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-</div>
-<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>BIG10LIBS <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/BIG10LIBS.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>BIG10LIBS <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/BIG10LIBS.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 20 Columns: 27
@@ -235,39 +236,58 @@ lgl  (4): Block Solos, Block Assists, BHE, Trpl Dbl
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>players_data <span class="ot">&lt;-</span> BIG10LIBS <span class="sc">%&gt;%</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team <span class="sc">==</span> <span class="st">"Nebraska"</span>, Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Laney Choboy"</span>, <span class="st">"Olivia Mauch"</span>, <span class="st">"Lexi Rodriguez"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Player, APS)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(players_data, <span class="fu">aes</span>(<span class="at">x =</span> Player, <span class="at">y =</span> APS, <span class="at">color =</span> Player)) <span class="sc">+</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Laney Choboy"</span> <span class="ot">=</span> <span class="st">"#E41C38"</span>, <span class="st">"Olivia Mauch"</span> <span class="ot">=</span> <span class="st">"#FDF2D9"</span>, <span class="st">"Lexi Rodriguez"</span> <span class="ot">=</span> <span class="st">"black"</span>)) <span class="sc">+</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparison of Aces Per Set between Nebraska's Current Libero and Potential Liberos"</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Highlighting Lexi Rodriguez's APS vs. Laney Choboy and Olivia Mauch | By Lydia Hernandez | Source: BIG10VB.com"</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Player"</span>,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Aces Per Set (APS)"</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">3.2</span>, <span class="at">y =</span> <span class="fu">max</span>(players_data<span class="sc">$</span>APS), <span class="at">label =</span> <span class="st">"Lexi's APS"</span>, <span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="fl">11.7</span>),</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">size =</span> <span class="dv">9</span>)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>players_data <span class="ot">&lt;-</span> BIG10LIBS <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team <span class="sc">==</span> <span class="st">"Nebraska"</span>, Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Laney Choboy"</span>, <span class="st">"Olivia Mauch"</span>, <span class="st">"Lexi Rodriguez"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Player, APS)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(players_data, <span class="fu">aes</span>(<span class="at">x =</span> Player, <span class="at">y =</span> APS, <span class="at">color =</span> Player)) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Laney Choboy"</span> <span class="ot">=</span> <span class="st">"#E41C38"</span>, <span class="st">"Olivia Mauch"</span> <span class="ot">=</span> <span class="st">"#FDF2D9"</span>, <span class="st">"Lexi Rodriguez"</span> <span class="ot">=</span> <span class="st">"black"</span>)) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparison of Aces Per Set between Nebraska's Current Libero and Potential Liberos"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Highlighting Lexi Rodriguez's APS vs. Laney Choboy and Olivia Mauch | By Lydia Hernandez | Source: BIG10VB.com"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Player"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Aces Per Set (APS)"</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">3.2</span>, <span class="at">y =</span> <span class="fu">max</span>(players_data<span class="sc">$</span>APS), <span class="at">label =</span> <span class="st">"Lexi's APS"</span>, <span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="fl">11.7</span>),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">size =</span> <span class="dv">9</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Our data shows that Mauch’s and Choboy’s Aces Per Set (APS) are not as high as Rodriguez’s, but they’re not far off either. This leaves room for improvement, giving both of them something to work on in the upcoming season. But don’t misunderstand—both players are strong servers in their own right.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>BIG10_SERVE_PASS_Sheet2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/BIG10 SERVE PASS - Sheet2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 13 Columns: 11
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): Name
+dbl (10): RK, GP, Sets, SA, SA/S, SE, A/E, RA, R%, RE
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
 <p>Serve receive is often regarded as one of the most important skills for a libero. The job demands covering the back row, positioning yourself to ensure the ball reaches the setter with accuracy. Based on our data, Mauch has a slightly higher serve receive percentage than Choboy (by 2.3%) and is just under Rodriguez’s by (1.2%). In Husker volleyball, the back row is always solid, but these slight differences in percentages do stand out.</p>
 <p>The other key stats to consider are digs per set and assists per set. Being able to dig some of the hardest attacks in the world and get those out of system balls when the setter is playing defense is super important.Again, Choboy and Mauch are neck and neck, so what does this mean for the final decision? As I mentioned earlier, this is Husker Volleyball—they recruit the best players in the country. Ultimately, the choice of who becomes the next libero for Nebraska involves more than just statistics. However, stats do provide some important insights. Mauch has a slightly stronger serve receive, closely mirroring Rodriguez, while Choboy has a more powerful and accurate serve.</p>
 <p>Ultimately, this will be a tough decision for Head Coach John Cook. Beyond the stats, he will need to review extensive game and practice footage, evaluating how each player interacts with their teammates, their quickness on their feet, and most importantly, their leadership abilities both on and off the court. Do they understand their teammates’ strengths and weaknesses? Can they call out plays and communicate effectively with hitters? Are they loud and assertive, getting as many touches as possible with no hesitation? These are all crucial factors that Coach Cook will need to consider when selecting Nebraska’s next libero.</p>

@@ -7,6 +7,13 @@
     "text": "This is Lydia Hernandez’s blog that dives into all this Husker Volleyball. Her most recent being who she thinks the next Libero will be after Lexi Rodriquez graduates.\nLydia Hernandez is a junior at the University of Nebraska-Lincoln studying Sports Media & Communication, ADPR, and Broadcasting. She is from Omaha and has always loved being creative. Early on she joined social media and knew she wanted to work in the creative world—whether through social media, photography, videography, or writing. Currently Hernandez holds multiple jobs, Most notably with the Nebraska Athletics Creative team, as a COJMC Ambassador, and is an owner of her own photography business."
   },
   {
+    "objectID": "posts/merrit-beasons-move-to-ne-improve-her-skills/Index.html",
+    "href": "posts/merrit-beasons-move-to-ne-improve-her-skills/Index.html",
+    "title": "Did Merritt Beason’s Move to Nebraska Improve Her Overall Skills as a Player?",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nLast season the Huskers welcomed in Merritt Beason the opposite from Alabama. Beason"
+  },
+  {
     "objectID": "posts/who-is-nebraska's-next-libero/index.html",
     "href": "posts/who-is-nebraska's-next-libero/index.html",
     "title": "Do statistics determine who the next Nebraska libero will be?",
@@ -18,6 +25,6 @@
     "href": "index.html",
     "title": "HernandezVBBLOG",
     "section": "",
-    "text": "Do statistics determine who the next Nebraska libero will be?\n\n\n\n\n\n\nncaa\n\n\nvolleyball\n\n\nhuskers\n\n\n\n\n\n\n\n\n\nNov 5, 2024\n\n\nLydia Hernandez\n\n\n\n\n\n\nNo matching items"
+    "text": "Did Merritt Beason’s Move to Nebraska Improve Her Overall Skills as a Player?\n\n\n\n\n\n\nncaa\n\n\nvolleyball\n\n\nhuskers\n\n\nmerritt\n\n\n\n\n\n\n\n\n\nDec 8, 2024\n\n\nLydia Hernandez\n\n\n\n\n\n\n\n\n\n\n\n\nDo statistics determine who the next Nebraska libero will be?\n\n\n\n\n\n\nncaa\n\n\nvolleyball\n\n\nhuskers\n\n\n\n\n\n\n\n\n\nNov 5, 2024\n\n\nLydia Hernandez\n\n\n\n\n\n\nNo matching items"
   }
 ]
